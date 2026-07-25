@@ -75,8 +75,8 @@ has:
   either GLFW or ImGui, so we will not talk much about it either. For us, this is simply the underlying system that
   communicates the drawing information to the GPU for us.
 
-Go ahead and scroll through and read the comments. They explain the purpose of each part, and walk you through the
-program design.
+Go ahead and scroll through `main.cpp` and read the comments. They explain the purpose of each part, and walk you
+through the program design.
 
 ## Adding More
 
@@ -84,9 +84,8 @@ Now that you've taken some time to understand the existing code, let's work on a
 
 Writing notes into a textbox is cool and all, but it would be nice if we could at least save what we've written so we
 can recall it later. To accomplish this, we will add two buttons below the text box: One will say "Save", and pressing
-it
-will save our notes to a file in the same folder as the app executable itself. The other button will say "Load", and
-pressing it will load the contents of this file. To accomplis the file handling, we will use the C++ `fstream` library,
+it will save our notes to a file in the same folder as the app executable itself. The other button will say "Load", and
+pressing it will load the contents of this file. To accomplish the file handling, we will use the C++ `fstream` library,
 which provides some convenient utilities for reading and writing from/to files.
 
 First, we will need to make the fstream functions available by including the appropriate header file. At the top of
@@ -144,8 +143,8 @@ Now that we have our fun file-finagling fully formed and functional, we need to 
 this, we will use the `ImGui::Button` function. This function takes one string parameter, and when it is called ImGui
 will draw a button on the next line in our window, with the string parameter as it's display text. For example,
 `ImGui::Button("Hello World!")` will display a button that shows "Hello World!" inside. Additionally, this function
-returns whether the button was pushed in the last frame. So, we can test the return value of this function to determine
-if we need to take some kind of action:
+returns a boolean indicating whether the button was pushed in the last frame. So, we can test the return value of this
+function to determine if we need to take some kind of action:
 
 ```c++
 if(ImGui::Button("...text...")) {
@@ -159,17 +158,16 @@ and ImGui button as shown above, and use the code for writing our notes to a fil
 when the button is pushed, the file writing code should be inside the if-statement for the button.
 
 Next, add another if-statement/button combo for the load button. This should be outside and after the first
-if-statement,
-since we want to check the buttons separately. Do something similar to the save button with the if-statement for the
-load button and the code to read from the file.
+if-statement, since we want to check the buttons separately. Do something similar to the save button with the
+if-statement for the load button and the code to read from the file.
 
 Now, if you run the program, you should see two new buttons below the textbox for saving and loading. Try pushing them
 to see if they work. After you push "Save", there should be a file in the same folder as the app executable called
-"notes" that contains all the text you wrote. If you restart the program, you should be greeted with a blank notepad,
+`notes` that contains all the text you wrote. If you restart the program, you should be greeted with a blank notepad,
 but after pushing "Load" everything you wrote should come back.
 
-If for some reason it isnt working, try adding some printouts (via `std::cout << ` or `printf`, whichever is more
-comfortable for you) to see whats happening, or if you're feeling fancy poke around with the debugger.
+If for some reason it isn't working, try adding some printouts (via `std::cout << ` or `printf`, whichever is more
+comfortable for you) to see what's happening, or if you're feeling fancy poke around with the debugger.
 
 If you have tried as hard as you could but you cant figure out why your save/loads are not working, there is a
 [solution repository]() which does have the answers. However, try to save this as a last resort, since you won't learn
