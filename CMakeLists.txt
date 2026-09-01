@@ -41,4 +41,4 @@ target_include_directories(notepad_app PRIVATE include)
 target_link_libraries(notepad_app PRIVATE imgui)
 
 # Tell the compiler to do some other special things to make the program optimized for Windows
-target_link_options(notepad_app PRIVATE -mwindows -static)
+target_link_options(notepad_app PRIVATE -mwindows)
